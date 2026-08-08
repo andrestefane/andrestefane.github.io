@@ -9,17 +9,17 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-  --bg: #0f1115;
-  --bg2: #1a1d23;
-  --ink: #f5f5f5;
-  --ink2: #cfcfcf;
-  --ink3: #8a8f98;
-  --accent: #ffffff;
-  --accent2: #2a2f38;
-  --border: #2a2f38;
-  --tag-bg: #1a1d23;
-  --radius: 3px;
-}
+    --bg: #0f1115;
+    --bg2: #1a1d23;
+    --ink: #f5f5f5;
+    --ink2: #cfcfcf;
+    --ink3: #8a8f98;
+    --accent: #ffffff;
+    --accent2: #2a2f38;
+    --border: #2a2f38;
+    --tag-bg: #1a1d23;
+    --radius: 3px;
+  }
 
   html { scroll-behavior: smooth; }
 
@@ -77,10 +77,11 @@
     line-height: 1.7;
   }
 
-  .contact-row a:hover {
-  border-color: #ffffff;
-  color: #ffffff;
-  background: #1a1d23;
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
   }
 
   .contact-row a {
@@ -159,12 +160,9 @@
     transition: background 0.15s;
     position: relative;
   }
-  .project-card {
-   background: #0f1115;
-  }
 
   .project-card:hover {
-   background: #1a1d23;
+    background: var(--bg2);
   }
 
   .project-header {
@@ -217,11 +215,11 @@
   }
 
   /* ── SKILLS ── */
-   .skill-chip {
-    background: #1a1d23;
-    border: 1px solid #2a2f38;
-    color: #cfcfcf;
-   }
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   .skill-row {
     display: grid;
@@ -349,7 +347,7 @@
   <div class="header-top">
     <div>
       <h1>Andrei Nicolás<br>Stefanescu</h1>
-      <p class="subtitle">Estudiante en 42 Madrid. Arquitectura de software en C y C++, con interés creciente en Sistemas,kernel y cyberseguridad. Me gusta entender cómo funcionan las cosas por dentro.</p>
+      <p class="subtitle">Estudiante en 42 Madrid. Arquitectura de software en C y C++, con interés creciente en Sistemas, Kernel y Ciberseguridad. Me gusta entender cómo funcionan las cosas por dentro.</p>
     </div>
   </div>
   <div class="contact-row">
@@ -391,6 +389,20 @@
         <p class="project-desc">Servidor HTTP/1.1 implementado desde cero en C++. Sockets no bloqueantes, multiplexación con select/poll, métodos GET/POST/DELETE, soporte CGI y configuración tipo nginx.</p>
         <div class="tags">
           <span class="tag">C++</span><span class="tag">HTTP/1.1</span><span class="tag">Sockets</span><span class="tag">CGI</span><span class="tag">Linux</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/andrestefane/Inception" target="_blank">
+        <div class="project-header">
+          <span class="project-name">Inception</span>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3v7"/></svg>
+        </div>
+        <p class="project-desc">Infraestructura multi-contenedor dockerizada con NGINX, WordPress, MariaDB, Redis, FTP y Uptime Kuma sobre red aislada.</p>
+        <div class="tags">
+          <span class="tag">Docker</span>
+          <span class="tag">Docker Compose</span>
+          <span class="tag">DevOps</span>
+          <span class="tag">Redes</span>
         </div>
       </a>
 
@@ -449,35 +461,45 @@
         </div>
       </a>
 
-     <a class="project-card" href="https://github.com/andrestefane/gnl" target="_blank">
+      <a class="project-card" href="https://github.com/andrestefane/gnl" target="_blank">
         <div class="project-header">
           <span class="project-name">gnl</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3v7"/></svg>
         </div>
-        <p class="project-desc">Reimplementación de get_next_line. Base de todos los proyectos de 42, centrada en gestión de memoria y manejo de strings.</p>
+        <p class="project-desc">Función en C para lectura de líneas completas desde descriptores de archivos, utilizando variables estáticas y gestión óptima de búferes.</p>
         <div class="tags">
-          <span class="tag">C</span><span class="tag">Librería estándar</span><span class="tag">Memoria</span>
+          <span class="tag">C</span>
+          <span class="tag">I/O</span>
+          <span class="tag">Variables Estáticas</span>
+          <span class="tag">File Descriptors</span>
         </div>
       </a>
-     
+
       <a class="project-card" href="https://github.com/andrestefane/ft_printf" target="_blank">
         <div class="project-header">
           <span class="project-name">ft_printf</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3v7"/></svg>
         </div>
-        <p class="project-desc">Reimplementación de printf de todos los proyectos de 42, centrada en gestión de memoria y manejo de strings.</p>
+        <p class="project-desc">Recreación de la función printf estándar con soporte para argumentos variádicos, conversiones de bases numéricas y formateo de texto.</p>
         <div class="tags">
-          <span class="tag">C</span><span class="tag">Librería estándar</span><span class="tag">Memoria</span>
+          <span class="tag">C</span>
+          <span class="tag">Funciones Variádicas</span>
+          <span class="tag">Formateo</span>
+          <span class="tag">Conversión Hexadecimal</span>
         </div>
       </a>
-     <a class="project-card" href="https://github.com/andrestefane/libft" target="_blank">
+
+      <a class="project-card" href="https://github.com/andrestefane/libft" target="_blank">
         <div class="project-header">
           <span class="project-name">libft</span>
           <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3v7"/></svg>
         </div>
-        <p class="project-desc">Reimplementación de la librería estándar de C,  Base de todos los proyectos de 42, centrada en gestión de memoria y manejo de strings.</p>
+        <p class="project-desc">Librería propia en C con reimplementaciones de la libc estándar y estructuras de datos avanzadas como listas enlazadas.</p>
         <div class="tags">
-          <span class="tag">C</span><span class="tag">Librería estándar</span><span class="tag">Memoria</span>
+          <span class="tag">C</span>
+          <span class="tag">Estructuras de Datos</span>
+          <span class="tag">Listas Enlazadas</span>
+          <span class="tag">Gestión de Memoria</span>
         </div>
       </a>
 
@@ -519,12 +541,6 @@
           <span class="skill-chip">Procesos / Hilos</span>
         </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">Nube</span>
-        <div class="skill-items">
-          <span class="skill-chip">AWS (en curso)</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -545,13 +561,6 @@
           <span class="edu-date">hasta 2023</span>
         </div>
         <p class="edu-sub">IES Enrique Tierno Galván, Madrid</p>
-      </div>
-      <div class="edu-item">
-        <div class="edu-header">
-          <span class="edu-name">AWS Cloud Architect</span>
-          <span class="edu-date">en curso</span>
-        </div>
-        <p class="edu-sub">Certificación en arquitectura cloud con Amazon Web Services.</p>
       </div>
     </div>
   </section>
